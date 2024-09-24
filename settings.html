@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الملف الشخصي</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/settings.css">
+</head>
+
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container-fluid">
+            <!-- شعار اللعبة -->
+            <a class="navbar-brand" href="#">
+                <img id="navAvatar" src="" alt="صورة المستخدم" class="avatar-in-nav me-2">
+                <span id="welcomeText"></span>
+
+            </a>
+
+            <!-- زر للقائمة في الشاشات الصغيرة -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- روابط التنقل -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <!-- رابط الذهاب للعب الآن -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="./game.html">العب الآن</a>
+                    </li>
+                    <!-- رابط الذهاب إلى قائمة المتصدرين -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="./leaderboard.html">المتصدرين</a>
+                    </li>
+                </ul>
+                <!-- صورة الشخصية في الشريط العلوي -->
+                <!-- زر تسجيل الخروج -->
+                <button class="btn btn-danger" onclick="logout()">تسجيل الخروج</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <!-- البطاقة الأولى -->
+            <div class="col-md-7" >
+                <div class="card p-3">
+                    <h4 class="text-center">معلومات الحساب</h4>
+                    <form id="profileForm">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">الاسم</label>
+                            <input type="text" id="username" class="form-control" placeholder="الاسم">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">البريد الإلكتروني</label>
+                            <input type="email" id="email" class="form-control" placeholder="البريد الإلكتروني">
+                        </div>
+                        <div class="mb-3">
+                            <label for="avatar" class="form-label">الصورة الشخصية</label>                           
+                            <div class="avatars d-flex justify-content-center gap-3">
+                                <img src="./assets/images/p1.png" class="avatar-img" onclick="selectAvatar(this)" alt="Avatar 1">
+                                <img src="./assets/images/p2.png" class="avatar-img" onclick="selectAvatar(this)" alt="Avatar 2">
+                                <img src="./assets/images/p3.png" class="avatar-img" onclick="selectAvatar(this)"  alt="Avatar 2"  id="txtqwe2" >
+                            </div>
+                            <p class="text-center mt-3" style="color: #004d40; font-weight: bold;" id="txtqwe1">
+                                * عند تحقيق أقل من 100 خطوة، يمكنك تخصيص صورتك الشخصية
+                            </p> 
+                        </div>
+                        <!-- حقل إدخال رابط الصورة الخارجية -->
+                        <div class="mb-3 external-image-field" id="externalImageField">
+                            <label for="externalImageUrl" class="form-label">أدخل رابط الصورة الخارجية</label>
+                            <input type="url" id="externalImageUrl" class="form-control" placeholder="ضع رابط الصورة هنا">
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">حفظ التعديلات</button>
+                    </form>
+                    <p style="color: #28a745; margin-top: 5px;" id="alirterr5"></p>
+                </div>
+            </div>
+
+            <!-- البطاقة الثانية -->
+            <div class="col-md-5">
+                <div class="card p-3">
+                    <h4 class="text-center">إحصائيات</h4>
+                    <div class="stats-list">
+                        <p><strong>عدد الخطوات:</strong> <span id="steps"></span></p>
+                        <p><strong>الوقت المستغرق:</strong> <span id="time"></span></p>
+                    </div>
+                    <canvas id="playerComparisonChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/settings.js"></script>
+</body>
+
+</html>

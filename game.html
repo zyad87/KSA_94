@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة المتاهة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/game.css">
+
+<body>
+    <div id="instructions-container" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: rgba(0,0,0,0.8); z-index: 1000; display: flex; justify-content: center; align-items: center;">
+        <div style="background-color: rgba(255, 255, 255, 0.582); padding: 20px; border-radius: 10px; text-align: center; width: 80%; max-width: 400px; backdrop-filter: blur(5px);">
+            <h2>جاهز توصل الطيارة لموسم الرياض؟</h2>
+            <ul style="text-align: right;">
+                <li>تحكم في الشاحنة باستخدام الأسهم وحاول توصيل الطيارة بدون ما تضيع في المتاهة!                </li>
+                <li>ركز وخلك سريع، الطريق طويل !                </li>
+            </ul>
+            <button onclick="startGame()" style="padding: 10px 20px; margin-top: 20px; background-color: #004d40; color: white; border: none; border-radius: 5px; cursor: pointer;">نبدأ الرحلة</button>
+            
+        </div>
+    </div>
+    </div>
+    <div class="navbar">
+        <div class="user-info">
+            <img id="profilePicture" src="" alt="User" style="margin-left: 10px;"/>
+            <span id="username">User Name</span>
+        </div>
+        <div class="timer">
+            الوقت : <span id="timer">00:00</span>
+        </div>
+    </div>
+
+    <div id="gradient"></div>
+    <div id="page">
+        <div id="Message-Container">
+            <div id="message">
+                <h1>مبروك الفوز</h1>
+                <p style="font-size: 1.2em; margin-bottom: 15px;">الحمد لله، وصلت بسلامة بعد <span id="moves" style="font-weight: bold;">0</span> خطوة</p>
+                <p style="font-size: 1.1em;">الطيارة نزلت في موسم الرياض بنجاح !</p>
+                <button style="margin-top: 20px; padding: 10px 20px; background-color: #004d40; color: white; border: none; border-radius: 5px; font-size: 1em; cursor: pointer;" onclick="window.location.href='leaderboard.html'">شوف ترتيبك</button>
+                <button style="margin-top: 20px; padding: 10px 20px; background-color: white; color: #004d40; border: none; border-radius: 5px; font-size: 1em; cursor: pointer;" onclick="window.location.href='settings.html'">الملف الشخصي</button>
+            </div>
+        </div>
+
+        <div id="view">
+            <div id="mazeContainer">
+                <canvas id="mazeCanvas" class="border" height="1100" width="1100"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
+    <script src="./assets/js/game.js"></script>
+</body>
+
+</html>

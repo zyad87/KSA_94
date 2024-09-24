@@ -1,0 +1,191 @@
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px) !important;
+
+    color: white;
+    font-size: 18px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar .user-info {
+    display: flex;
+    align-items: center;
+}
+
+.navbar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+
+
+
+
+body {
+    background-image: url('../images/bg2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    font-family: 'Tajawal', sans-serif;
+
+    padding: 0;
+}
+
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#mazeContainer {
+    transition-property: opacity;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+    top: 75px;
+    opacity: 0;
+    display: inline-block;
+    background: rgb(255, 234, 197);
+    background: linear-gradient(234deg, rgba(255, 213, 141, 0.7) 5%, rgba(108, 78, 49, 0.75) 85%);
+    backdrop-filter: blur(5px) !important;
+    margin: auto;
+}
+
+#mazeContainer #mazeCanvas {
+    margin: 0;
+    display: block;
+    border: solid 1px black;
+}
+
+input,
+select {
+    transition-property: background-color opacity;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 45px;
+    width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    display: inline-block;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+input:hover,
+select:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+input:active,
+select:active {
+    background-color: black;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+}
+
+#Message-Container {
+    visibility: hidden;
+    color: white;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px) !important;
+    z-index: 1;
+}
+
+#Message-Container #message {
+    width: 300px;
+    height: 300px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: -150px;
+}
+
+#page {
+    font-family: 'Tajawal', sans-serif;
+    text-align: center;
+    height: auto;
+    width: auto;
+    margin: auto;
+}
+button{
+    font-family: 'Tajawal', sans-serif !important;
+
+}
+
+#page #menu {
+    margin: auto;
+    padding: 10px;
+    height: 65px;
+    box-sizing: border-box;
+}
+
+#page #menu h1 {
+    margin: 0;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 3.2rem;
+}
+
+#page #view {
+    position: absolute;
+    top: 65px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
+}
+
+.border {
+    border: 1px black solid;
+    border-radius: 5px;
+}
+
+.bg-success {
+--bs-bg-opacity: 1;
+background-color: rgb(0 77 64) !important;
+}
+
+
+@media only screen and (max-width: 400px) {
+    input,
+    select {
+        width: 120px;
+    }
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <title>ترتيب اللاعبين</title>
+    <link rel="stylesheet" href="./assets/css/leaderboard.css" />
+  </head>
+
+  <body>
+    <!-- شريط التنقل -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success mb-3">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="./assets/images/log2.png"
+            alt="Bootstrap"
+            width="60"
+            height="50"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="./game.html">العب الآن</a>
+            </li>
+          </ul>
+          <div id="authButtons">
+            <!-- هنا سيتم إضافة زر الملف الشخصي أو زر التسجيل -->
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="leaderboard-container my-3">
+      <button class="btn btn-custom" id="openModalBtn">
+        <i class="fa-regular fa-circle-question"></i>
+      </button>
+
+      <h1>ترتيب اللاعبين</h1>
+      <div id="status-message"></div>
+      <!-- لعرض رسالة المركز الحالي أو الانضمام -->
+
+      <ul id="leaderboard-list">
+        <!-- سيتم عرض اللاعبين هنا -->
+      </ul>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="rankingModal"
+      tabindex="-1"
+      aria-labelledby="rankingModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="rankingModalLabel">
+              آلية احتساب المراكز
+            </h5>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <li>
+                الأولوية الأولى هي للوقت: اللاعب الذي يُنهي اللعبة في وقت أقل
+                يحصل على مركز أعلى.
+              </li>
+              <li>
+                إذا تساوى اللاعبون في الوقت، يتم مقارنة عدد الخطوات: اللاعب الذي
+                يُنهي اللعبة بعدد خطوات أقل يحصل على مركز أعلى.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/leaderboard.js"></script>
+  </body>
+</html>
