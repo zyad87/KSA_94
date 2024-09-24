@@ -35,11 +35,44 @@ function loadProfile() {
     document.getElementById("welcomeText").innerText = "مرحباً، مستخدم!";
   }
 }
+// جلب بيانات المستخدم من التخزين المحلي
+function loadProfile() {
+  let playerData = localStorage.getItem("player");
+  if (playerData) {
+    let player = JSON.parse(playerData);
+
+    // عرض البيانات في النصوص
+    document.getElementById("username").value = player.username;
+    document.getElementById("email").value = player.email;
+    document.getElementById("steps").innerText = player.level;
+    document.getElementById("time").innerText = player.score;
+
+    // نص ترحيبي باسم المستخدم
+    document.getElementById(
+      "welcomeText"
+    ).innerText = `مرحباً، ${player.username}!`;
+
+    // إضافة صورة اللاعب إلى الشريط العلوي
+    document.getElementById("navAvatar").src = player.avatar;
+
+    // إظهار حقل إدخال رابط الصورة الخارجية إذا كانت الخطوات أقل من 100
+    if (player.level < 100) {
+      document.getElementById("externalImageField").style.display = "block";
+      document.getElementById("txtqwe1").style.display = "none";
+      document.getElementById("txtqwe2").style.display = "block";
+    } else {
+      document.getElementById("externalImageField").style.display = "none";
+      document.getElementById("txtqwe1").style.display = "block";
+      document.getElementById("txtqwe2").style.display = "none";
+    }
+  } else {
+    document.getElementById("welcomeText").innerText = "مرحباً، مستخدم!";
+  }
+}
 
 window.onload = function () {
   loadProfile();
 
-  // بيانات اللاعب الحالي
   let currentPlayerData = localStorage.getItem("player");
   let currentPlayer = currentPlayerData
     ? JSON.parse(currentPlayerData)
@@ -49,22 +82,22 @@ window.onload = function () {
   fetch("https://66eef15d3ed5bb4d0bf267fd.mockapi.io/Players")
     .then((response) => response.json())
     .then((players) => {
-      // بيانات المقارنة: المستخدمين العشوائيين
       let otherPlayers = players.slice(0, 4); // عرض 4 لاعبين آخرين
 
-      // تحويل الوقت إلى عدد الثواني
+      // تحويل الوقت إلى عدد الثواني مع التحقق من وجود الوقت
       function convertTimeToSeconds(time) {
+        if (!time || time === "") {
+          return 0; // إذا كان الوقت غير موجود، يتم تعيينه إلى 0
+        }
         let parts = time.split(":");
         return parseInt(parts[0]) * 60 + parseInt(parts[1]);
       }
 
-      // استخراج بيانات الخطوات و الوقت
       let stepsData = otherPlayers.map((player) => player.level);
       let timeData = otherPlayers.map((player) =>
         convertTimeToSeconds(player.score)
       );
 
-      // إضافة بيانات اللاعب الحالي
       stepsData.push(currentPlayer.level);
       timeData.push(convertTimeToSeconds(currentPlayer.score));
 
@@ -72,10 +105,15 @@ window.onload = function () {
         .map((player) => player.username)
         .concat([currentPlayer.username]);
 
-      // إعداد الرسم البياني باستخدام Chart.js
       let ctx = document
         .getElementById("playerComparisonChart")
         .getContext("2d");
+
+      if (!ctx) {
+        console.error("Error: Canvas element not found.");
+        return;
+      }
+
       new Chart(ctx, {
         type: "bar",
         data: {
